@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>HexCode.Client.Program</StartupObject>
+    <ApplicationIcon>HexCode.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\HexCode.ico" />
+    <None Remove="Resources\lightning.png" />
+    <None Remove="Resources\stopwatch.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="1.68.2-preview.43" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExampleRobot\ExampleRobot.csproj" />
+    <ProjectReference Include="..\HexCode.Engine\HexCode.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include=" Resources\blue_N.png" />
+    <EmbeddedResource Include=" Resources\blue_NE.png" />
+    <EmbeddedResource Include=" Resources\blue_NW.png" />
+    <EmbeddedResource Include=" Resources\blue_S.png" />
+    <EmbeddedResource Include=" Resources\blue_SE.png" />
+    <EmbeddedResource Include=" Resources\blue_SW.png" />
+    <EmbeddedResource Include=" Resources\red_N.png" />
+    <EmbeddedResource Include=" Resources\red_NE.png" />
+    <EmbeddedResource Include=" Resources\red_NW.png" />
+    <EmbeddedResource Include=" Resources\red_S.png" />
+    <EmbeddedResource Include=" Resources\red_SE.png" />
+    <EmbeddedResource Include=" Resources\red_SW.png" />
+    <EmbeddedResource Include="Resources\HexCode.ico" />
+    <EmbeddedResource Include="Resources\lightning.png" />
+    <EmbeddedResource Include="Resources\stopwatch.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Settings1.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Maps\Garden.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\Maze.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\OneOnOne.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\OpenField.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\Pockets.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Maps\SmallArena.hcmap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Maps\" />
+  </ItemGroup>
+  
+</Project>
