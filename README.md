@@ -13,3 +13,8 @@ Intro: https://youtu.be/6jt-mOLVmFc
 Setup: https://youtu.be/yyvssjvxWhY
 
 Debug: https://youtu.be/Nl7-EfsFxEs
+
+
+
+
+NEU: Hexcode Discord: https://discord.gg/9qDVmrB
