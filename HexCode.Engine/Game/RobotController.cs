@@ -22,7 +22,6 @@ namespace HexCode.Engine
             Energy = robotType.MaxEnergy;
             Id = id;
             robot.SetRobotController(this);
-            Parts = 100;
         }
         public bool TurnCompleted { get; set; }
 
@@ -50,7 +49,6 @@ namespace HexCode.Engine
         public int Energy { get; set; }
         public bool HasOutage { get; set; }
 
-        public int Parts { get; set; }
 
         public byte Id { get; set; }
 

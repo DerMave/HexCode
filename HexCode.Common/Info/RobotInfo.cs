@@ -14,7 +14,6 @@ namespace HexCode.Common
             Energy = robotController.Energy;
             TurnCompleted = turnCompleted;
             HasOutage = hasOutage;
-            Parts = robotController.Parts;
             Id = robotController.Id;
         }
 
@@ -27,6 +26,5 @@ namespace HexCode.Common
         public int Energy {  get; }
         public bool TurnCompleted {  get; }
         public bool HasOutage {  get; }
-        public int Parts { get; }
     }
 }
