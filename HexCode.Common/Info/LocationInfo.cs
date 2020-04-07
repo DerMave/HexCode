@@ -3,7 +3,7 @@ namespace HexCode.Common
 {
     public class LocationInfo 
     {
-        public LocationInfo(Location location, bool isOnMap, bool isToxic, TileType tileType, int parts, RobotInfo robotInfo)
+        public LocationInfo(Location location, bool isOnMap, bool isToxic, TileType tileType, RobotInfo robotInfo)
         {
             HasRobot = false;
             Location = location;
@@ -11,7 +11,6 @@ namespace HexCode.Common
             IsToxic = isToxic;
             IsOnMap = isOnMap;
             TileType = tileType;
-            Parts = parts;
             if (robotInfo != null)
             {
                 HasRobot = true;
@@ -34,6 +33,5 @@ namespace HexCode.Common
         public bool IsToxic { get; }
         public bool IsOnMap { get; }
         public TileType TileType { get; }
-        public int Parts { get; }
     }
 }

@@ -29,7 +29,6 @@ namespace HexCode.Engine
         public BaseRobot Robot { get; set; }
         public Location Location { get; set; }
         public Location NewMoveLocation { get; set; }
-        public Location NewWallLocation { get; set; }
         public Direction Direction { get; set; } = Direction.North;
         public Location AttackLocation { get; set; }
         public Team Team { get; set; }
@@ -231,35 +230,13 @@ namespace HexCode.Engine
             _gameController.DrawDebugIndicatorText(this, loc, color, text);
         }
 
-        public bool CanLayMine(Direction direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LayMine(Direction direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanBuildWall(Direction direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BuildWall(Direction direction)
-        {
-            NewWallLocation = this.Location.DirectTo(Direction, 1);
-        }
-
-
-        public IEnumerable<Location> ScanForMines()
-        {
-            throw new NotImplementedException();
-        }
-
+      
         LocationInfo IRobotController.GetLocationInfo(Location loc)
         {
-            throw new NotImplementedException();
+            if (Location.Distance(loc) > RobotType.ScannerRange) {
+                throw new LocationOutOfSightException();
+            }
+            return _gameController.GetLocationInfo(loc);
         }
     }
 }

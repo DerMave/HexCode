@@ -29,7 +29,6 @@ namespace HexCode.Engine
         //public int RobotsPerTeam { get; set; } = 1;
         public int ToxRate { get; set; } = 6;
 
-        protected int[,] _Parts;
         public List<RobotController> RobotControllers { get; private set; }
         public int Round { get; private set; }
         public Map Map { get; set; }
@@ -160,19 +159,7 @@ namespace HexCode.Engine
         }
 
 
-        public int GetParts(Location loc)
-        {
-            return _Parts[loc.XPos, loc.YPos];
-        }
-
-        public void AddRemoveParts(Location loc, int value)
-        {
-            _Parts[loc.XPos, loc.YPos] += value;
-            if (_Parts[loc.XPos, loc.YPos] < 0) {
-                _Parts[loc.XPos, loc.YPos] = 0;
-            }
-        }
-
+  
         public void NextRound()
         {
             Round += 1;
@@ -243,13 +230,6 @@ namespace HexCode.Engine
                     rc.Location = rc.NewMoveLocation;
                     rc.Energy -= rc.RobotType.MoveEnergyCost;
                     rc.NewMoveLocation = null;
-                }
-                if (rc.NewWallLocation != null) {
-                    if (!IsOnMap(rc.NewWallLocation)) { throw new ApplicationException(); }
-
-                    rc.Energy -= rc.RobotType.WallEnergyCost;
-                    rc.Parts -= rc.RobotType.WallPartsCost;
-                    rc.NewWallLocation = null;
                 }
 
                 rc.TurnCompleted = true;
@@ -384,7 +364,7 @@ namespace HexCode.Engine
             }
 
             if (IsOnMap(loc)) {
-                ret = new LocationInfo(loc, true, IsToxic(loc), Map.GetTileType(loc), GetParts(loc), robotInfo);
+                ret = new LocationInfo(loc, true, IsToxic(loc), Map.GetTileType(loc), robotInfo);
             } else {
                 ret = new LocationInfo(loc, false);
             }

@@ -19,8 +19,6 @@ namespace HexCode.Engine
             EnergyRegeneration = 25;
             MoveEnergyCost = 20;
             AttackEnergyCost = 20;
-            WallEnergyCost = 20;
-            WallPartsCost = 20;
         }
 
         public int MoveRange { get; set; }
@@ -33,7 +31,5 @@ namespace HexCode.Engine
         public int MoveEnergyCost { get; set; }
         public int AttackEnergyCost { get; set; }
         public int Damage { get; set; }
-        public int WallEnergyCost { get; set; }
-        public int WallPartsCost { get; set; }
     }
 }

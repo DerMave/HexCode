@@ -13,7 +13,5 @@ namespace HexCode.Common
         int EnergyRegeneration { get; }
         int MoveEnergyCost { get;  }
         int AttackEnergyCost { get; }
-        int WallEnergyCost { get; }
-        int WallPartsCost { get; }
     }
 }
