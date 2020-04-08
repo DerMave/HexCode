@@ -14,6 +14,10 @@ Setup: https://youtu.be/yyvssjvxWhY
 
 Debug: https://youtu.be/Nl7-EfsFxEs
 
+Rules: https://youtu.be/VUFNGl5Uj_8
+
+First Robot: https://youtu.be/50bpgOQRW4U
+
 
 
 
