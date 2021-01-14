@@ -278,7 +278,7 @@ namespace HexCode.Client
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             string homeDir = System.IO.Path.GetDirectoryName(assembly.Location);
             MapLoader.MapFolder = homeDir + @"\Maps\";
-            ReplayController.MapFolder = homeDir + @"\Replays\";
+            //ReplayController.MapFolder = homeDir + @"\Replays\";
 
         }
 

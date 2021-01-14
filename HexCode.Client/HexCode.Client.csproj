@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>HexCode.Client.Program</StartupObject>
     <ApplicationIcon>HexCode.ico</ApplicationIcon>
@@ -15,12 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="1.68.2-preview.43" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ExampleRobot\ExampleRobot.csproj" />
-    <ProjectReference Include="..\HexCode.Engine\HexCode.Engine.csproj" />
+    <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="2.80.3-preview.18" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,6 +71,11 @@
 
   <ItemGroup>
     <Folder Include="Maps\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HexCode.Common\HexCode.Common.csproj" />
+    <ProjectReference Include="..\HexCode.Engine\HexCode.Engine.csproj" />
   </ItemGroup>
   
 </Project>

@@ -18,7 +18,7 @@ namespace HexCode.Engine.Game
                 System.IO.Directory.CreateDirectory(MapFolder);
             }
 
-            using (StreamWriter sw = File.CreateText(MapFolder + mapName + ".hcmap")) {
+            using (StreamWriter sw = File.CreateText(getMapFullPath(mapName))) {
                 serializer.Serialize(sw, map);
             }
         }
@@ -28,7 +28,7 @@ namespace HexCode.Engine.Game
             JsonSerializer serializer = new JsonSerializer();
             Map map;
             serializer.ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor;
-            using (StreamReader sr = File.OpenText(MapFolder + mapName + ".hcmap")) {
+            using (StreamReader sr = File.OpenText(getMapFullPath(mapName))) {
                 map = (Map)serializer.Deserialize(sr, typeof(Map));
             }
 
@@ -50,7 +50,17 @@ namespace HexCode.Engine.Game
 
         public static bool IsMapValid(string mapName)
         {
-            return File.Exists(MapFolder + mapName + ".hcmap");
+            return File.Exists(getMapFullPath(mapName));
+        }
+
+        /// <summary>
+        /// Safe for Windows & Linux
+        /// </summary>
+        /// <param name="mapName"></param>
+        /// <returns></returns>
+        private static string getMapFullPath(string mapName)
+        {
+            return Path.Combine(MapFolder, mapName + ".hcmap");
         }
     }
 }

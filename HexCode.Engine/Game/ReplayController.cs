@@ -44,33 +44,36 @@ namespace HexCode.Engine.Game
             }
         }
 
-        public static void SaveReplay(ReplayContainer replayContainer)
+        public static byte[] SaveReplay(ReplayContainer replayContainer)
         {
             JsonSerializer serializer = new JsonSerializer();
 
             serializer.ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor;
 
-            if (!System.IO.Directory.Exists(MapFolder)) {
-                System.IO.Directory.CreateDirectory(MapFolder);
-            }
+            //if (!System.IO.Directory.Exists(MapFolder)) {
+            //    System.IO.Directory.CreateDirectory(MapFolder);
+            //}
 
-            string fileName = replayContainer.RedTeamName + "_VS_" + replayContainer.BlueTeamName + "_" + DateTime.Now.ToString("yyyyMMddTHHmmss");
+            //string fileName = replayContainer.RedTeamName + "_VS_" + replayContainer.BlueTeamName + "_" + DateTime.Now.ToString("yyyyMMddTHHmmss");
 
-
-            using (FileStream fileStream = File.Create(MapFolder + fileName + ".hcrep")) {
-                using (var zipStream = new GZipStream(fileStream, CompressionMode.Compress, true)) {
+            byte[] data = null;
+            //using (FileStream fileStream = File.Create(MapFolder + fileName + ".hcrep")) {
+            using (MemoryStream ms = new MemoryStream()) {
+                using (var zipStream = new GZipStream(ms, CompressionMode.Compress, true)) {
                     using (var streamWriter = new StreamWriter(zipStream)) {
                         using (var jsonWriter = new JsonTextWriter(streamWriter)) {
                             serializer.Serialize(jsonWriter, replayContainer);
                         }
                     }
                 }
+                data = ms.ToArray();
             }
 
 
+            return data;
         }
 
-        public static String MapFolder { get; set; }
+        //public static String MapFolder { get; set; }
         public static ReplayController LoadReplay(string path)
         {
             JsonSerializer serializer = new JsonSerializer();
@@ -79,6 +82,7 @@ namespace HexCode.Engine.Game
             using (FileStream fileStream = File.OpenRead(path)) { // @".\Replays\" + fileName + ".hcrep"
                 using (var zipStream = new GZipStream(fileStream, CompressionMode.Decompress, true)) {
                     using (var streamRead = new StreamReader(zipStream)) {
+                            //var txt = streamRead.ReadToEnd();
                         using (var jsonReader = new JsonTextReader(streamRead)) {
                             replayContainer = (ReplayContainer)serializer.Deserialize(jsonReader, typeof(ReplayContainer));
                         }
@@ -87,7 +91,40 @@ namespace HexCode.Engine.Game
             }
 
             return new ReplayController(replayContainer);
+        }
 
+        public static ReplayController GetReplayStream(string path)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            ReplayContainer replayContainer;
+            serializer.ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor;
+            using (FileStream fileStream = File.OpenRead(path)) { // @".\Replays\" + fileName + ".hcrep"
+                using (var zipStream = new GZipStream(fileStream, CompressionMode.Decompress, true)) {
+                    using (var streamRead = new StreamReader(zipStream)) {
+                        var txt = streamRead.ReadToEnd();
+                        using (var jsonReader = new JsonTextReader(streamRead)) {
+                            replayContainer = (ReplayContainer)serializer.Deserialize(jsonReader, typeof(ReplayContainer));
+                        }
+                    }
+                }
+            }
+
+            return new ReplayController(replayContainer);
+        }
+
+        public static ReplayController LoadReplayFromStream(Stream stream)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            ReplayContainer replayContainer;
+            serializer.ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor;
+            using (var zipStream = new GZipStream(stream, CompressionMode.Decompress, true)) {
+                using (var streamRead = new StreamReader(zipStream)) {
+                    using (var jsonReader = new JsonTextReader(streamRead)) {
+                        replayContainer = (ReplayContainer)serializer.Deserialize(jsonReader, typeof(ReplayContainer));
+                    }
+                }
+            }
+            return new ReplayController(replayContainer);
 
         }
 

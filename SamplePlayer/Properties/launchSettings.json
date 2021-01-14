@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SamplePlayer": {
+      "commandName": "Executable",
+      "executablePath": "C:\\HexCode\\src\\HexCode.Client\\bin\\Debug\\net5.0-windows\\HexCode.Client.exe"
+    }
+  }
+}

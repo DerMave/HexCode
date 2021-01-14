@@ -205,7 +205,7 @@ namespace HexCode.Engine
                     try {
                         rc.Robot.RunRound();
                     }
-                    catch (Exception ex) {
+                    catch (Exception) {
                         rc.AttackLocation = null;
                         rc.NewMoveLocation = null;
                         rc.HasOutage = true;
@@ -309,7 +309,7 @@ namespace HexCode.Engine
                 ReplayContainer.WinnerTeam = WinnerTeam;
                 ReplayContainer.Rounds = Round;
 
-                ReplayController.SaveReplay(ReplayContainer);
+                //ReplayController.SaveReplay(ReplayContainer);
 
             }
 

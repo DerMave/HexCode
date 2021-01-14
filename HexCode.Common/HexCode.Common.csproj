@@ -1,9 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>HexCode.Common</RootNamespace>
     <AssemblyName>HexCode.Common</AssemblyName>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Martin Meister</Authors>
+    <PackageProjectUrl>https://www.hexcoding.de/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DerMave/HexCode</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright @ Martin Meister</Copyright>
   </PropertyGroup>
 
 </Project>
